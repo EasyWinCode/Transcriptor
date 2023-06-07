@@ -58,8 +58,10 @@ body {
 }
 
 .card {
+  padding: 8%;
   background-color: white;
   box-shadow: 2px 2px 12px 1px rgba(140, 140, 140, .5);
+  overflow-wrap:break-word;
 }
 
 .card-title {
@@ -69,8 +71,9 @@ body {
 }
 
 textarea {
-  min-width: 230px;
-  min-height: 30px;
-  max-width: 400px;
+  font-size: larger;
+  min-width: 95%;
+  min-height: 40px;
+  max-width: 95%;
   max-height: 800px;
 }
