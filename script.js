@@ -241,30 +241,44 @@ const charTable = {
     "做":"дзуо⁴"
 };
 
-function replaceWithAssociation(input) {
-    // Split the input into an array of words
-    const words = input.split(" ");
-    
-    // Loop through each word and replace if it's in the associaction table
-    const output = words.map(word => {
-      if (charTable[word]) {
-        return charTable[word];
-      }
-      return word;
-    });
-    
-    // Join the words back into a string and return
-    return output.join(" ");
-  }
+function replaceWithAssociation2(input) {
+  // Split the input into an array of words
+  let userInput = input;
+  let output = "";
+  for(let i = 0; i < userInput.length; i++) {
+    let currentChar = userInput.charAt(i);
+    let nextChar = currentChar + userInput.charAt(i+1);
+    let next2Char = nextChar + userInput.charAt(i+2);
 
-//для множества символов
-const updateString_2 = () => {
-    let inputString = document.getElementById('input').value;
-    inputString = replaceWithAssociation(inputString);  
-    document.getElementById('output').innerText = inputString;  
+    if(charTable[currentChar]) {
+      if(charTable[currentChar] != ' '){
+        output += charTable[currentChar];
+      }
+      else{
+        output += currentChar;
+      }
+    } 
+    else if (charTable[nextChar]){
+      output += charTable[nextChar];
+      i++;
+    }
+    else if (charTable[next2Char]){
+      output += charTable[next2Char];
+      i = i + 2;
+    }
+    else {
+      output += currentChar;
+    }
+  }
+  //出租车 衣服 服
+  return output;
+}
+const updateString_3 = () => {
+  let inputString = document.getElementById('input').value;
+  inputString = replaceWithAssociation2(inputString);  
+  document.getElementById('output').innerText = inputString;  
 };
 
+document.getElementById('input').addEventListener('input', updateString_3);
 
-
-document.getElementById('input').addEventListener('input', updateString_2);
 
