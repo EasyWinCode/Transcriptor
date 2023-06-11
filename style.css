@@ -58,7 +58,7 @@ body {
 }
 
 .card {
-  padding: 8%;
+  padding: 3%;
   background-color: white;
   box-shadow: 2px 2px 12px 1px rgba(140, 140, 140, .5);
   overflow-wrap:break-word;
