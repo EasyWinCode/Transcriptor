@@ -241,6 +241,59 @@ const charTable = {
     "做":"дзуо⁴"
 };
 
+//для одного символа
+const updateString = () => {
+    let inputString = document.getElementById('input').value;
+    inputString = inputString
+    .split('')
+    .map(char => charTable[char] ? charTable[char] : char)
+    .join('');
+    document.getElementById('output').innerText = inputString;
+    console.log(charTable[char]);
+};
+
+//для множества символов через пробелы
+function replaceWithAssociation(input) {
+    // Split the input into an array of words
+    const words = input.split(" ");
+    
+    // Loop through each word and replace if it's in the associaction table
+    const output = words.map(word => {
+      if (charTable[word]) {
+        return charTable[word];
+      }
+      return word;
+    });
+    
+    // Join the words back into a string and return
+    return output.join(" ");
+  }
+const updateString_2 = () => {
+    let inputString = document.getElementById('input').value;
+    inputString = replaceWithAssociation(inputString);  
+    document.getElementById('output').innerText = inputString;  
+};
+// if(charTable[currentChar]) {
+//   if(charTable[currentChar] != ' '){
+//     if(charTable[nextChar]){
+//       if (charTable[next2Char]){
+//         output += charTable[next2Char];
+//         i = i + 2;
+//       }
+//       else{
+//         output += charTable[nextChar];
+//         i++;
+//       }
+//     }
+//     else{
+//       output += charTable[currentChar];
+//     } 
+//   }
+//   else{
+//     output += currentChar;
+//   }
+// }
+//для целого текста
 function replaceWithAssociation2(input) {
   // Split the input into an array of words
   let userInput = input;
@@ -252,15 +305,33 @@ function replaceWithAssociation2(input) {
 
     if(charTable[currentChar]) {
       if(charTable[currentChar] != ' '){
-        output += charTable[currentChar];
+        if(charTable[nextChar]){
+          if (charTable[next2Char]){
+            output += charTable[next2Char];
+            i = i + 2;
+          }
+          else{
+            output += charTable[nextChar];
+            i++;
+          }
+        }
+        else{
+          output += charTable[currentChar];
+        } 
       }
       else{
         output += currentChar;
       }
     } 
     else if (charTable[nextChar]){
-      output += charTable[nextChar];
-      i++;
+      if (charTable[next2Char]){
+        output += charTable[next2Char];
+        i = i + 2;
+      }
+      else{
+        output += charTable[nextChar];
+        i++;
+      }
     }
     else if (charTable[next2Char]){
       output += charTable[next2Char];
@@ -280,5 +351,4 @@ const updateString_3 = () => {
 };
 
 document.getElementById('input').addEventListener('input', updateString_3);
-
 
