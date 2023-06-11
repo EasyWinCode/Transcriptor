@@ -273,27 +273,7 @@ const updateString_2 = () => {
     inputString = replaceWithAssociation(inputString);  
     document.getElementById('output').innerText = inputString;  
 };
-// if(charTable[currentChar]) {
-//   if(charTable[currentChar] != ' '){
-//     if(charTable[nextChar]){
-//       if (charTable[next2Char]){
-//         output += charTable[next2Char];
-//         i = i + 2;
-//       }
-//       else{
-//         output += charTable[nextChar];
-//         i++;
-//       }
-//     }
-//     else{
-//       output += charTable[currentChar];
-//     } 
-//   }
-//   else{
-//     output += currentChar;
-//   }
-// }
-//для целого текста
+
 function replaceWithAssociation2(input) {
   // Split the input into an array of words
   let userInput = input;
