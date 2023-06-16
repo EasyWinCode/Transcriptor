@@ -264,8 +264,6 @@ function replaceWithAssociation(input) {
       }
       return word;
     });
-    
-    // Join the words back into a string and return
     return output.join(" ");
   }
 const updateString_2 = () => {
