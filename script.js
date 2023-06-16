@@ -321,7 +321,6 @@ function replaceWithAssociation2(input) {
       output += currentChar;
     }
   }
-  //出租车 衣服 服
   return output;
 }
 const updateString_3 = () => {
